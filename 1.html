@@ -10,28 +10,47 @@
   <!--
 Обязательное задание.
 
-Необходимо с помощью цикла for вывести следующие 11 строк в консоль:
-0 – это ноль
-1 – нечетное число
-2 – четное число
-3 – нечетное число
-…
-10 – четное число
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
 -->
   <script>
     "use strict";
 
-    for (let index = 0; index < 110; index++) {
-
-      if (index === 0) {
-        console.log(`${index} - это ноль`);
-        continue;
-      } else if (index % 2 === 0) {
-        console.log(`${index} - четное число`);
-        continue;
-      }
-      console.log(`${index} - нечетное число`);
+    function ProductES5(name, cost) {
+      this.name = name;
+      this.cost = cost;
     }
+
+    ProductES5.prototype.make25Discount = function () {
+      this.cost = this.cost * 0.75;
+    };
+
+    let obj1 = new ProductES5('яблоки', 100);
+    console.log(`Название: ${obj1.name}, цена: ${obj1.cost}`);
+    obj1.make25Discount();
+    console.log(`Название: ${obj1.name}, цена: ${obj1.cost}`);
+
+    class ProductES6 {
+      constructor(name, cost) {
+        this.name = name;
+        this.cost = cost;
+      }
+
+      make25Discount() {
+        this.cost = this.cost * 0.75;
+      }
+    }
+
+    let obj2 = new ProductES6('груши', 200);
+    console.log(`Название: ${obj2.name}, цена: ${obj2.cost}`);
+    obj2.make25Discount();
+    console.log(`Название: ${obj2.name}, цена: ${obj2.cost}`);
   </script>
 </body>
 
